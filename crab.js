@@ -35,13 +35,10 @@ const vehicle = {
   consumption: '10.8 l',
 }
 
-bdbOrm.define("crabModel", "https://schema.org/v1/myModel")
+bdbOrm.define("crabModel1", "https://schema.org/v1/myModel")
 
-userDID.define("myModel1", "https://schema.org/v1/myModel")
-carDID.define("myModel1", "https://schema.org/v1/myModel")
-gpsDID.define("myModel1", "https://schema.org/v1/myModel")
-
-/* bdbOrm.models.crabModel
+//create section
+/* bdbOrm.models.crabModel1
  .create({
   keypair: alice,
   data: {
@@ -54,17 +51,23 @@ gpsDID.define("myModel1", "https://schema.org/v1/myModel")
   // crab.id equals the id of the asset
   // crab.data is latest data version
   // crab.transactionHistory gives the full history
+  console.log(crab.id)
+  console.log(crab.data)
+  console.log(crab.transactionHistory)
  }) */
+ //End create section
 
-/* bdbOrm.models.crabModel
+//Retrieve section
+/* bdbOrm.models.crabModel1
  .retrieve()
  .then(assets => {
   // assets is an array of myModel
   console.log(assets.map(asset => asset.id))
  }) */
+ //End Retrieve section
 
-// create an asset with Alice as owner
-/* bdbOrm.models.crabModel
+// Append section
+/* bdbOrm.models.crabModel1
  .create({
   keypair: alice,
   data: { key: 'dataValue' }
@@ -84,9 +87,10 @@ gpsDID.define("myModel1", "https://schema.org/v1/myModel")
   // need to be done to updatedAsset
   console.log(updatedAsset.data)
  }) */
+ // End Append section
  
- // create an asset with Alice as owner
-bdbOrm.models.crabModel
+ // Burn section
+bdbOrm.models.crabModel1
  .create({
   keypair: alice,
   data: { key: 'dataValue' }
@@ -103,3 +107,4 @@ bdbOrm.models.crabModel
   // asset is now tagged as "burned"
   console.log(burnedAsset.data)
  })
+  // End Burn section

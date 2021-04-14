@@ -34,12 +34,12 @@ const vehicle = {
   consumption: '10.8 l',
 }
 
-userDID.define("myModel2", "https://schema.org/v1/myModel")
-carDID.define("myModel2", "https://schema.org/v1/myModel")
-gpsDID.define("myModel2", "https://schema.org/v1/myModel")
+userDID.define("myModel3", "https://schema.org/v1/myModel")
+carDID.define("myModel3", "https://schema.org/v1/myModel")
+gpsDID.define("myModel3", "https://schema.org/v1/myModel")
 
 //Create section
-/* userDID.models.myModel2.create({
+/* userDID.models.myModel3.create({
         keypair: alice,
         data: {
             name: 'Alice',
@@ -52,7 +52,7 @@ gpsDID.define("myModel2", "https://schema.org/v1/myModel")
 		console.log(asset.id)
     })
 
-carDID.models.myModel2.create({
+carDID.models.myModel3.create({
         keypair: alice,
         data: {
             vehicle
@@ -64,7 +64,7 @@ carDID.models.myModel2.create({
 		console.log(asset.id)
     })
 
-gpsDID.models.myModel2.create({
+gpsDID.models.myModel3.create({
         keypair: car,
         data: {
             gps_identifier: 'a32bc2440da012'
@@ -77,46 +77,22 @@ gpsDID.models.myModel2.create({
     }) */
 //END Create section
 
-/* function updateMileage(did, newMileage){
-    did.models.myModel2
-    .retrieve(did.id)
-    .then(assets => {
-        // assets is an array of myModel
-        // the retrieve asset contains the last (unspent) state
-        // of the asset
-        return assets[0].append({
-            toPublicKey: car.publicKey,
-            keypair: car,
-            data: { newMileage }
-        })
-    })
-    .then(updatedAsset => {
-        did.mileage =  updatedAsset.data.newMileage
-        document.body.innerHTML +='<h3>Append transaction created</h3>'
-        document.body.innerHTML +=txTelemetrySigned.id
-		console.log(updatedAsset)
-        return updatedAsset
-    })
-} */
-
-// updateMileage(carDID, newMileage)
-
 //Retrieve section
-/* userDID.models.myModel2
+/* userDID.models.myModel3
     .retrieve()
     .then(assets => {
         // assets is an array of myModel
         console.log(assets.map(asset => asset.id))
     })
 
-carDID.models.myModel2
+carDID.models.myModel3
     .retrieve()
     .then(assets => {
         // assets is an array of myModel
         console.log(assets.map(asset => asset.id))
     })
 	
-gpsDID.models.myModel2
+gpsDID.models.myModel3
     .retrieve()
     .then(assets => {
         // assets is an array of myModel
@@ -128,14 +104,9 @@ const newMileage = '12'
 
 //Append section
 // create an asset with Alice as owner
-carDID.models.myModel2
+carDID.models.myModel3
  .retrieve()
- .then(assets => {
-        // assets is an array of myModel
-        // the retrieve asset contains the last (unspent) state
-        // of the asset
-		// console.log(assets.map(asset => asset.id))
-		// console.log(assets[0])
+ .then(assets => {        
 		
         return assets[0].append({
             toPublicKey: car.publicKey,
@@ -143,10 +114,7 @@ carDID.models.myModel2
             data: { newMileage }
         })
     })
- .then(updatedAsset => {
-        // carDID.mileage =  updatedAsset.data.newMileage
-        // document.body.innerHTML +='<h3>Append transaction created</h3>'
-        // document.body.innerHTML +=txTelemetrySigned.id
+ .then(updatedAsset => {       
 		console.log(updatedAsset)
         return updatedAsset
     })
